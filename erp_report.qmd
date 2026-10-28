@@ -1,5 +1,5 @@
 ---
-title: "ERP analysis report (customise title to fit your topic)"
+title: "How is the N170 component related to face processing?"
 author: "Taylor Davies"
 date: today
 format: 
@@ -12,7 +12,7 @@ format:
 execute:
     warning: false
     message: false
-bibliography: "erp_report.bib"
+bibliography: "bib_file.bib"
 ---
 
 ## Setup
@@ -41,33 +41,27 @@ No AI was used to generate this report.
 
 ## Introduction
 
-Provide an introduction to the ERP component of your choice here. This should include a brief literature review -- see report instructions for details.
-Use appropriate subheadings as required: adapt the ones below, create new ones or delete as needed.
-
-### Intro subheading 1
-
-### Intro subheading 2
+Faces can be familiarised within a few hundred miliseconds, during which specific qualities assist the identification of a person's facial expression, gender, ethnic origin, or the direction of their gaze (@kappenmanOxfordHandbookEventRelated2011). There has been extensive research, beginning in the early 1970s, on face processing, with the intention of examining the nature of facial cues and their global face representation (@kappenmanOxfordHandbookEventRelated2011). The N170 component results from an increased synchronisation of postsynaptic neural activity phase-locked and time-locked to stimulus onset, with a greater increase in neural activity for faces than objects (@kappenmanOxfordHandbookEventRelated2011). The waveform amplitude typically peaks between 130 ms and 200 ms, reaching its maximum at posterior lateral scalp regions, with neural contributions from the fusiform gyrus and superior temporal sulcus (@hinojosaN170SensitivityFacial2015). Furthermore, the lateral, basal temporal, and extrastriate occipital corticies are likely involved in the neural stimulation (@olivaresBrainSignalsFace2015). The N170 causes a negative deflection, followed earlier by the posterior visual components such as the C1 component, peaking approximately at 70 ms, and the P1 component, peaking approximately at 100 ms (@rossionN170UnderstandingTime2011). The occipito-temporal topography, latency, and greater amplitude for face-related stimuli compared to objects define the N170 component (@rossionN170UnderstandingTime2011). Exceptions that have been observed when studying the component are that the front view of cars can elicit a similar response to upright faces, which may be due to similar feature configurations (@olivaresBrainSignalsFace2015). Similarly, human body parts can cause similar effects but are often generated in more anterior brain regions (@olivaresBrainSignalsFace2015). To interpret the differences in amplitude between non-faced stimuli, several factors need to be controlled, such as the stimulus category being evaluated, low-level feature differences, spatial frequency, location, contrast, and size (@eimerFaceSensitivityN170Component2011). @eimerFaceSensitivityN170Component2011 highlights how poor control of low-level visual cues can be the cause of the differences in amplitude rather than differences between scrambled and unscrambled stimuli of faces and cars, emphasising the importance of eliminating confounding factors. There is also a debate about the degree to which the M170 component influences the N170 component concerning face processing. For instance, when eyes were presented in isolation, the N170 was larger compared to viewing a full-face image, suggesting the component may focus more on the individual face components (@eimerN170ComponentIts2011). Whereas, contradicting studies have shown that the N170 is more sensitive to the configuration of faces, where latencies and amplitudes were enhanced or delayed by the inversion of faces (@eimerN170ComponentIts2011). This current literature will examine the N170 component, analysing the EEG dataset provided by the ERP CORE resource and referring to the @kappenmanERPCOREOpen2021 paper.
 
 ## Methods
 
-Complete the following subsections using the information from @kappenman2021. Don't forget to mention that the data are from the ERP CORE resource under a Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). 
+
 
 ### Participants
 
-Provide information on the number of participants and their demographics (sex, age, handedness) as well as the inclusion criteria for the study.
+The study included 40 participants from the University of California (25 females, 15 males) with a mean age of 21.5 years (SD = 2.87, range = 18-30) and 38 participants were right-handed.
 
 ### Procedure
 
-Describe the task that participants completed. This should be tailored to the task / component that you chose to analyse.
+Data was obtained from the ERP CORE (Compendium of Open Resources and Experiments) which includes a set of experimental control scripts, sample data, data processing pipelines, and a set of optimised paradigms. To examine the N170 component a visual discrimination paradigm was used to isolate the face-specific response. For each trial in the Face Perception task, an image of either a face, car, scrambled face, or scrambled car was displayed in the centre of a screen, and participants were instructed to determine whether the stimulus was an "object" (face or car) or a "texture" (scrambled face or scrambled car).
 
 ### EEG recording
 
-Describe the EEG recording parameters: amplifier and type of cap used, electrode positions, CMS / DRL electrode positions, EOG electrode positions, and filter parameters.
+Electrodes were fixed into an elastic cap and EEG data was recorded using Biosemi Active Two System with 30 scalp electrodes (FP1, F3, F7, FC3, C3, C5, P3, P7, P9, PO7, PO3, O1, Oz, Pz, CPz, FP2, Fz, F4, F8, FC4, FCz, Cz, C4, C6, P4, P8, P10, P08, PO4, O2), placed accordingly to 10/20 International System. At PO1 the common mode sense (CMS) electrode was located, and at PO2 the driven right leg electrode was located. Signals were then downsampled to 256Hz from 1024Hz to improve efficiency. EEG signals for the N170 component were then referenced to the average of all 33 sites and were filtered using a low-pass, fifth-order sinc filter, with a half-power cutoff of 204.8Hz that was then digitised at 1024Hz.
 
 ### Analysis parameters
 
-Choose these parameters appropriate for the component that you are analysing. Use those recommended by @kappenman2021; see their Table 1. This holds for all parameters except for the filter parameters; for these, you can stick to the example parameters provided below.
-Describe the parameters in this section and also modify the code accordingly
+For the N170 component, the electrode site was PO8 with an epoch window of -200ms to 800ms and a baseline period of -200ms to 0ms. Similarly, it was a stimulus-locked event. The analysis window for the N170 component ranged from 110ms to 150ms in @kappenmanERPCOREOpen2021 however the window was adjusted to 150 ms to 200ms in this paper.
 
 #### Preprocessing parameters
 
@@ -103,6 +97,8 @@ REJECT = {
 ```
 
 ## Data analysis
+
+Software used for data analysis was the ERPLAB toolbox (version 8.001; Lopex-Calderon and Luck, 2014) and the EEGLAB toolbox (version 14_4_4b; Delorme and Makeig, 2004), performed in MATLAB. If more than 25% of trials contained artifacts such as horizontal eye movement or eye blinks, or if reaction times were not within the 200-1000ms range, participants were excluded. Similarly, if task accuracy was below 75% or if less than 50% of trials remained in the condition, the participant was excluded. Hence, the final sample included 37 participants. The following ERP components were quantified to measure the timing and strength of neural responses. Components included the amplitude, calculating the mean amplitude by averaging the voltage within window and the peak amplitude by noting the maximum and minimum range depending on the polarity. Similarly, latency was measured, recording the peak latency when amplitude peaked, onset latency when peak amplitude had reached 50% and the 50% area latency being the time when neural signal reached the halfway threshold. Noise in EEG data was also quantified to limit external and internal interferences. A 20Hz low-pass filter was applied to quantify baseline noise, measurement-window noise suppressed underlying ERP signals by implementing plus-minus averaging, and point-by-point noise was applied to control random fluctuations across individual time points. The four stimuli included in the experiment were a face, a car, a scrambled face, and a scrambled car to measure differences in neural activity. Statistical measures included a cluster-based permutation test with 2500 iterations that corresponded to the 95th percentile and a one-sample t-test that compared difference-wave amplitudes. Furthermore, Cohen's d was calculated to quantify effect size.
 
 ### Preprocessing
 
@@ -176,28 +172,26 @@ for cond in CONDITIONS:
 
 ### Grand average: expected effect
 
-Plot the electrode deemed most representative for the effect by @kappenman2021.
-Set the parameters for the specified analysis window, which will include dotted vertical lines marking the analysis window on the plot.
-Note: for some components, @kappenman2021 refer to two electrode sites. If this is the case for your chosen component, the analysis requires a consideration of lateralisation; please make an appointment to discuss the required analysis tweaks with Ina.
+The ERP waveforms were measured and averaged across 37 participants. The polarity of the waveform was negative-going, where the face stimulus elicited the greatest peak amplitude at approximately -2µV and the car stimulus elicited a peak amplitude at approximately -0.2µV. Similarly, the peak latency occurs around 160ms for the face stimulus and around 180ms for the car stimulus. Whereas the scrambled stimuli produced a positive-going waveform, displaying no significant N170 peak and no clear latency difference between the unscrambled face and car stimuli. The N170 component similarly had maximum effect over the right inferotemporal cortex.
 
 ```{python}
 selected_electrode = "PO8"
 plot_title = "Grand average for N170: unscrambled versus scrambled face and car stimuli"
-analysis_window_start = 0.110
-analysis_window_end = 0.150
+analysis_window_start = 0.150
+analysis_window_end = 0.20
 
 plot_evokeds(grand_avs, picks = selected_electrode, invert_y = True, title = plot_title, vlines = [analysis_window_start, analysis_window_end])
 
 
 ```
 
-## Discussion and reflection
+## Discussion 
 
-Provide a brief discussion of the effect that you observed. Were you able to replicate the ERP component as observed by @kappenman2021? If not, what was different in your grand average ERP? 
+ERP effects were significant, as Cohen's dz>1 for both mean and peak amplitude. Effect size did appear greater for peak amplitude due to peaks being statistically biased away from zero using 0µV as the chance value. However, the grand average plot does not replicate the exact findings of @kappenmanERPCOREOpen2021. For instance, @kappenmanERPCOREOpen2021 had a mean amplitude of -3.37µV with a Cohen's d of 1.24, and a peak amplitude of -5.52µV, with Cohen's d of 1.66. Whereas the grand average plot shows a shorter peak, with the face stimulus eliciting the largest amplitude of approximately -2µV, suggesting a smaller effect size and Cohen's d. However, without statistical analysis, it cannot be verified whether the results are significant. Furthermore, the peak latency in the grand average plot falls outside the recommended measurement window of original report, being 110 to 150ms, as the peak latency plotted seems to occur later, approximately between 150ms and 200ms. Similarly, @kappenmanERPCOREOpen2021 peak latency occurred at 131.44ms and onset latency occurred at 95.76ms, with 50% area latency at 131.84ms. Whereas, the grand average plot seems to have a later peak occuring around 160ms. The N170 component was larger for faces than for cars and scrambled stimuli over the right inferotemporal region, which is consistent with the sensitivity of the N170 to face-related visual processing. @kappenmanOxfordHandbookEventRelated2011 found that the N170 amplitude is systematically greater for faces than for nonface objects, yet familiar objects like a car could elicit a relatively large N170 component, which corresponds to current findings, as scrambled stimuli elicited a weaker response to the car. Objects varying in shape, colour, and texture are thought to increase the N170 face effect artifically, creating potential latency differences when responses are averaged (@kappenmanOxfordHandbookEventRelated2011). @rhodesOxfordHandbookFace2011 also mention that because N170 is a visually evoked ERP component, visual components like the P1 are strongly affected by variations in size, luminance, spatial frequency, contrast, and retinal eccentricity of visual stimuli, which may be an explanation of why latency differed between scrambled stimuli. Yet, @rossionERPEvidenceSpeed2011 stated that if two objects are presented simultaneously, people are able to initiate a saccade toward the face stimuli as fast as 100ms to 110ms from stimulus onset. Although @kappenmanERPCOREOpen2021 establish that their electrode selection can introduce bias, as the PO8 elicits the greatest amplitude for the N170 component, it suggests that effect size may have been inflated, limiting generalisability. But as stated in the paper, the purpose of the results are to provide researchers with a comparison point for their own research. Hence, future research should focus on investigating other electrode sites and improving measurement methods to examine the N170 component.
 
-What did you learn by applying the analysis process to a new dataset?
+## Reflection
 
-## References
+I initially found it challenging to interpret the grand average plot given the information provided by Kappenman et al. (2021). However, once I adjusted the window to better reflect the N170 response on my own plot and conducted research on the latency, polarity, and amplitude of the N170 component I became more comfortable in analysing the graph.
 
-*Note: this document is set up to automatically generate a reference list via a bib file. We will look at how to do this in the week 9 workshop.*
+
 
